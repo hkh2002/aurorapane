@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 生成個案並顯示
     async function generateCaseFromAI(conversationHistory) {
         console.log('Sending conversationHistory to AI:', conversationHistory);
-        const apiKey = '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';
+        const apiKey = process.env.API_KEY;
         const apiURL = 'https://api.openai.com/v1/chat/completions';
 
         try {
@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // AI回應生成的邏輯
     async function StudentgenerateCaseFromAI(StudentconversationHistory) {
-        const apiKey = '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';
+        const apiKey = process.env.API_KEY;
         const apiURL = 'https://api.openai.com/v1/chat/completions';
 
         try {
