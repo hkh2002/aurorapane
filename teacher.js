@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function generateCaseAndSave(caseDescription, selectedEmotions, deadline, selectedStudents) {
         try {
-            const apiKey = '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';
+            const apiKey = process.env.API_KEY;
             const apiURL = 'https://api.openai.com/v1/chat/completions';
             const aiResponse = await fetch(apiURL, {
                 method: 'POST',
