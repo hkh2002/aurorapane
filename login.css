@@ -1,0 +1,99 @@
+body {
+    background: url('login.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff;
+    display: flex;
+}
+
+.login-container {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    height: 280px;
+    top: 38%;
+    left: 64%;
+    transform: translate(-50%, -50%);
+}
+
+#link {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 20%;
+    position: relative;
+    top: -10px;
+}
+
+@media (max-width: 800px) {
+    .login-container {
+        width: 200px;
+        height: 230px;
+        left: 70.5%;
+        top: 42%;
+    }
+
+    div h2 {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        height: 30px;
+        margin-bottom: 10px;
+        border: 1px solid #78741f;
+        border-radius: 30px;
+        box-sizing: border-box;
+    }
+}
+
+div h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #78741f;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+form button {
+    text-align: center;
+    background-color: #f1eeaa;
+    color: #78741f;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 30%;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #555;
+}

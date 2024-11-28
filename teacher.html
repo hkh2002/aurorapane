@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希望心窗</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="teacher.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">希望心窗</div>
+        <nav>
+            <ul class="menu" id="slidemenu">
+                <li><a href="#home">主頁</a></li>
+                <li><a href="#practice">題目管理</a>
+                    <ul class="submenu">
+                        <li><a href="#generatePractice">生成練習</a></li>
+                        <li><a href="#viewExercises">查看出題</a></li>
+                    </ul>
+                </li>
+                <li><a href="#result">學生練習報告</a>
+                    <ul class="submenu">
+                        <li><a href="#student" id="studentResult">學生自我練習</a></li>
+                        <li id="teacher-list"><a href="#teacher" id="teacherResult">老師出題</a></li>
+                    </ul>
+                </li>
+                <li><a href="#leave">登出</a></li>
+            </ul>
+            <i class="fa-solid fa-bars" id="toggle"></i>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h2>關於我們</h2>
+            <p>我們是一支充滿熱情與創意的年輕團隊，由不同背景的大學生組成，因共同的使命感而聚集。我們了解心理健康的重要性，並決心利用技術專長，開發出一款智能且易用的心理諮商AI訓練系統，幫助理解情緒，提供建議，引導走向健康心理。
+
+                我們相信科技應該服務人性需求，每個人都有獲得心理健康支持的權利。因此，我們不斷創新，希望為社會帶來改變。</p>
+        </div>
+    </section>
+
+    <section class="practice">
+        <div class="practice-content">
+            <h2>生成練習</h2>
+            <h3>選擇情緒</h3><br>
+            <input type="checkbox" id="Joy" value="喜悅" />喜悅
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Sadness" value="悲傷" />悲傷<br>
+            <input type="checkbox" id="Anger" value="憤怒" />憤怒
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Fear" value="恐懼" />恐懼<br>
+            <input type="checkbox" id="Surprise" value="驚訝" />驚訝
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Disgust" value="厭惡" />厭惡<br>
+            <input type="checkbox" id="Gratitude" value="感激" />感激
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Anticipation" value="期待" />期待<br>
+            <input type="checkbox" id="Shame" value="羞愧" />羞愧
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Guilt" value="內疚" />內疚<br>
+            <input type="checkbox" id="Excitement" value="興奮" />興奮
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Calmness" value="平靜" />平靜<br>
+            <input type="checkbox" id="Anxiety" value="焦慮" />焦慮
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Loneliness" value="孤獨" />孤獨<br>
+            <input type="checkbox" id="Disappointment" value="失望" />失望
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Pride" value="自豪" />自豪<br>
+            <input type="checkbox" id="Empathy" value="同情" />同情
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Confusion" value="迷茫" />迷茫<br>
+            <input type="checkbox" id="Comfort" value="安慰" />安慰
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Desire" value="渴望" />渴望<br><br>
+            <input type="checkbox" id="all" value="全選">全選
+            <button type="button">繼續</button>
+        </div>
+    </section>
+
+    <section class="choice">
+        <h2>生成練習</h2>
+        <h3>選擇學生</h3>
+        <div class="choice-box">
+            <input type="checkbox" id="call">全選<br>
+            <div id="student-list">
+                <!-- 學生列表將由 JavaScript 動態生成 -->
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button">上一頁</button>
+            <button type="submit" id="continue-button">繼續</button>
+        </div>
+    </section>
+
+    <section class="deadline" style="display: none;">
+        <h2>生成練習</h2>
+        <h3>選擇截止日期</h3>
+        <div class="deadline-container">
+            <input type="datetime-local" id="deadline" />
+            <br><br>
+            <input type="checkbox" id="no-deadline" /> 無期限
+        </div>
+        <div class="button-container">
+            <button type="submit" id="submit-button">提交</button> <!-- 這是提交按鈕 -->
+        </div>
+    </section>
+
+    <section id="view-exercises-section" class="view-exercises" style="display:none;">
+        <h2>查看出題</h2>
+        <div id="exercises-list" class="exercises-list">
+            <!-- 題目列表將顯示在這裡 -->
+        </div>
+        <div class="exercise-pagination">
+            <button id="exercise-prev-btn">上一頁</button>
+            <span id="exercise-page-info"></span>
+            <button id="exercise-next-btn">下一頁</button>
+        </div>
+    </section>
+
+    <div id="exercise-chatbox" class="chatbox" style="display:none;">
+        <div id="exercise-chatboxMessages" class="chatbox-messages">
+            <!-- 題目描述會顯示在這裡 -->
+        </div>
+        <div class="button-container feedback-buttons">
+            <button id="exercise-return-btn">返回</button>
+        </div>
+    </div>
+    
+
+    <section class="result">
+        <section class="teacherresult" style="display: none;">
+            <br><br>
+            <h3>老師出題</h3>
+            <div class="dropdown">
+                <label for="exercise-dropdown">選擇練習:</label>
+                <select id="exercise-dropdown">
+                    <option value="all">全部</option>
+                    <option value="expired">已截止</option>
+                    <!-- 練習選項將由 JavaScript 動態生成 -->
+                </select>
+                <label for="filter-status">篩選狀態:</label>
+                <select id="filter-status">
+                    <option value="reviewed">已評分</option>
+                    <option value="unreviewed">未評分</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="sort-by">排序方式:</label>
+                <select id="sort-by">
+                    <option value="time">根據時間</option>
+                    <option value="studentId">根據學號</option>
+                </select>
+                &nbsp;&nbsp;<label for="sort-order">排序順序:</label>
+                <button id="sort-order">
+                    <span id="sort-order-icon">&#9650;</span> <!-- 預設為由小到大 -->
+                </button>
+            </div>
+            <br>
+            <div id="report-list" class="report">
+                <!-- 報告內容將會顯示在這裡 -->
+            </div>
+            <div class="pagination">
+                <button id="prev-btn">上一頁</button>
+                <span id="page-info"></span>
+                <button id="next-btn">下一頁</button>
+            </div>
+        </section>
+
+        <section class="reports" style="display: none;">
+            <h3>老師出題報告</h3>
+            <div id="report-chatbox" class="chatbox">
+                <div id="report-chatboxMessages" class="chatbox-messages">
+                    <!-- 對話內容將顯示在這裡，並在每條訊息後添加輸入框 -->
+                </div>
+                <div class="feedback-container">
+                    <label for="total-feedback">總評語：</label>
+                    <textarea id="total-feedback" rows="4" placeholder="請填寫總評語..."></textarea>
+                </div>
+                <div class="button-container feedback-buttons">
+                    <button id="return-btn">返回</button>
+                    <button id="submit-feedback">提交評語</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="studentresult" style="display: none;">
+            <br><br>
+            <h3>學生自我練習</h3>
+            <div class="dropdown">
+                <label for="student-filter-status">篩選狀態:</label>
+                <select id="student-filter-status">
+                    <option value="reviewed">已評分</option>
+                    <option value="unreviewed">未評分</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="student-sort-by">排序方式:</label>
+                <select id="student-sort-by">
+                    <option value="time">根據時間</option>
+                    <option value="studentId">根據學號</option>
+                </select>
+                &nbsp;&nbsp;<label for="student-sort-order">排序順序:</label>
+                <button id="student-sort-order">
+                    <span id="student-sort-order-icon">&#9650;</span> <!-- 預設為由小到大 -->
+                </button>
+            </div>
+            <div id="student-report-list" class="report">
+                <!-- 學生報告內容將會顯示在這裡 -->
+            </div>
+            <div class="pagination">
+                <button id="student-prev-btn">上一頁</button>
+                <span id="student-page-info"></span>
+                <button id="student-next-btn">下一頁</button>
+            </div>
+        </section>
+
+        <section class="student-reports" style="display: none;">
+            <h3>學生自行練習報告</h3>
+            <div id="student-report-chatbox" class="chatbox">
+                <div id="student-report-chatboxMessages" class="chatbox-messages">
+                    <!-- 對話內容將顯示在這裡，並在每條訊息後添加輸入框 -->
+                </div>
+                <div class="feedback-container">
+                    <label for="total-feedback">總評語：</label>
+                    <textarea id="student-total-feedback" rows="4" placeholder="請填寫總評語..."></textarea>
+                </div>
+                <div class="button-container feedback-buttons">
+                    <button id="student-return-btn">返回</button>
+                    <button id="student-submit-feedback">提交評語</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 希望心窗. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="teacher.js" type="module"></script>
+</body>
+
+</html>

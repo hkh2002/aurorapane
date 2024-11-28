@@ -1,0 +1,593 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'poppins', sans-serif;
+    color: white;
+    background-color: #bcd4e4;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 110px;
+    color: #fff;
+    padding: 0 5%;
+    font-size: 18px;
+}
+
+header .logo {
+    color: #fff;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-right: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #a9cce3;
+    color: #fff;
+    text-align: center;
+    padding: 0.1rem 0;
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+}
+
+.home {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* 半透明的疊加背景 */
+        url('article.jpeg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.home-content {
+    max-width: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.home p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.studentpractice h2
+.emotion-selection h2 {
+    font-size: 30px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+}
+
+.smalltalk-content {
+    margin-top: 20px;
+    /* 確保內容與h2之間有一定距離 */
+    width: 100%;
+    /* 讓內容占據整個寬度 */
+}
+
+.result {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* 半透明的疊加背景 */
+        url('article.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    padding: 20px;
+    flex-direction: column;
+    /* 確保標題和選項居中顯示 */
+}
+
+.result h2 {
+    font-size: 30px;
+    margin: 15px;
+}
+
+.result-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.record-box {
+    width: 80vw;
+    height: 150px;
+    background-color: #f0f0f0;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #666;
+    font-size: 16px;
+}
+
+.record-box:hover,
+.practice-box:hover {
+    background-color: #ddd;
+}
+
+.message-feedback {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.feedback-container {
+    margin-top: 20px;
+}
+
+#total-feedback {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    gap: 10px;
+    /* 按鈕和文字之間的間距 */
+    margin-top: 20px;
+
+}
+
+#prev-btn,
+#next-btn,
+#teacher-prev-btn,
+#teacher-next-btn {
+    text-align: center;
+    background-color: #799ca5;
+    color: #fff;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 70px;
+    font-size: 16px;
+}
+
+#return-btn{
+    position: absolute;
+    bottom: -50px; /* 使按鈕位於框框的底部 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #799ca5;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 70px;
+    font-size: 16px;
+}
+
+/* 老師出題區域 */
+.practice,
+.studentpractice {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* 半透明的疊加背景 */
+        url('article.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    padding: 20px;
+    flex-direction: column;
+    /* 確保標題和選項居中顯示 */
+}
+
+.studentpractice h2,
+.practice h2 {
+    font-size: 30px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+}
+
+.practice-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.studentpractice-content {
+    width: 100%;
+}
+
+.choice button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 5px;
+    background-color: #799ca5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.practice-box {
+    width: 80vw;
+    height: 150px;
+    background-color: #f0f0f0;
+    margin: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #666;
+    font-size: 16px;
+}
+
+.practice-box:hover {
+    background-color: #ddd;
+}
+
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu>li {
+    list-style: none;
+    display: flex;
+    position: relative;
+    gap: 30px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 105%;
+    left: -10%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 18px;
+    z-index: 1000;
+    /* 確保它顯示在其他元素上方 */
+}
+
+/* 當滑鼠懸停在自我練習上時顯示 submenu */
+.menu li:hover .submenu {
+    display: block;
+}
+
+/* 子選單的樣式 */
+.submenu li {
+    width: 100px;
+}
+
+.submenu a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.submenu a:hover {
+    background-color: #eee;
+}
+
+.chatbox,
+.smalltalk {
+    width: 700px;
+    height: 450px;
+    /* 固定聊天框的高度 */
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 修正偏移，實現居中 */
+    margin-top: 10px; /* 確保聊天框和其他元素也有距離 */
+}
+
+#record-list {
+    margin-bottom: 20px; /* 在練習紀錄和聊天框之間增加距離 */
+}
+
+.chatbox-messages,
+.chatbox-mess {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    /* 启用垂直滚动 */
+    max-height: 370px;
+    /* 固定聊天内容区域的高度 */
+    height: 370px;
+    width: 100%;
+}
+
+.chatbox-input,
+.chatbox-inputbox {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+
+.chatbox-input input,
+.chatbox-inputbox input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: auto;
+    min-height: 50px;
+}
+
+.chatbox-input button,
+.chatbox-inputbox button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.chatbox-input button:hover,
+.chatbox-inputbox button:hover {
+    background-color: #0056b3;
+}
+
+.chatbox-input textarea,
+.chatbox-inputbox textarea {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: none;
+    overflow: hidden;
+    min-height: 30px;
+    max-height: 150px;
+    font-size: 16px;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+
+#end,
+#endButton {
+    padding: 3px 10px;
+    /* 調整按鈕內邊距 */
+    border: none;
+    background-color: #f95c76;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50px;
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#end:hover {
+    background-color: #b64255;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 20px;
+    word-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.message.user {
+    align-self: flex-end;
+    color: black;
+    background-color: #ddd;
+    border-bottom-right-radius: 0;
+    text-align: left;
+}
+
+.message.ai,
+.message.system {
+    align-self: flex-start;
+    color: black;
+    background-color: #e5e5ea;
+    border-bottom-left-radius: 0;
+    text-align: left;
+}
+
+.emotion-selection,
+.studentpractice,
+.practice {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* 半透明的疊加背景 */
+        url('article.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.emotion-selection-content {
+    position: absolute;
+    top: 50%;
+    /* 將黑框移動到距頁面頂部 50% */
+    left: 50%;
+    /* 將黑框移動到距頁面左側 50% */
+    transform: translate(-50%, -70%);
+    /* 使用 transform 將黑框的中心點對齊 */
+}
+
+#submitEmotion,
+#submitbutton {
+    text-align: center;
+    background-color: #799ca5;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 80px;
+    font-size: 16px;
+}
+
+#toggle {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 20px;
+    /* 給漢堡圖標和nav留點間距 */
+}
+
+/* 隱藏元素時的樣式 */
+.hidden {
+    display: none;
+}
+
+/* 初始化從視窗下方滑出的菜單 */
+.show {
+    position: fixed;
+    bottom: -100%;
+    /* 隱藏在下方 */
+    left: 50%;
+    /* 使菜單在水平方向居中 */
+    transform: translateX(-50%);
+    /* 水平居中對齊 */
+    width: 400px;
+    /* 固定寬度，適合垂直排列 */
+    height: 400px;
+    font-size: 25px;
+    background-color: #333;
+    text-align: center;
+    padding: 20px 0;
+    transition: bottom 0.5s ease-in-out;
+    z-index: 1000;
+    /* 確保在最前方 */
+    display: flex;
+    flex-direction: column;
+    /* 垂直排列菜單項 */
+    gap: 20%;
+    /* 菜單項之間的間距 */
+}
+
+/* 菜單從下方滑出到視窗底部 */
+.show.visible {
+    bottom: 0%;
+    /* 將菜單滑出至視窗中央 */
+}
+
+/* 恢復原始狀態下的菜单 */
+.show.original {
+    position: static;
+    /* 恢復為非固定布局 */
+    bottom: auto;
+    /* 取消bottom位置 */
+    left: auto;
+    /* 取消水平居中對齊 */
+    transform: none;
+    /* 取消transform */
+    width: auto;
+    /* 恢復默認寬度 */
+    background-color: transparent;
+    /* 恢復背景透明 */
+    z-index: auto;
+    /* 恢復默認堆疊順序 */
+    display: flex;
+    /* 顯示原始菜單樣式 */
+    flex-direction: row;
+    /* 水平排列菜單項 */
+    gap: 30px;
+    /* 恢復菜單間距 */
+    padding: 0;
+    /* 移除內邊距 */
+}

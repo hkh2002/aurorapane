@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希望心窗</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="student.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">希望心窗</div>
+        <nav>
+            <ul class="menu" id="slidemenu">
+                <li><a href="#home">主頁</a></li>
+                <li><a href="#practice">題目練習</a>
+                    <ul class="submenu">
+                        <li><a href="#student" id="studentMode">自行練習</a></li>
+                        <li><a href="#teacher" id="teacherMode">老師出題</a></li>
+                    </ul>
+                </li>
+                <li><a href="#result">查詢練習紀錄</a></li>
+                <li><a href="#leave" id="logoutButton">登出</a></li>
+            </ul>
+            <i class="fa-solid fa-bars" id="toggle"></i>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h2>關於我們</h2>
+            <p>我們是一支充滿熱情與創意的年輕團隊，由不同背景的大學生組成，因共同的使命感而聚集。我們了解心理健康的重要性，並決心利用技術專長，開發出一款智能且易用的心理諮商AI訓練系統，幫助理解情緒，提供建議，引導走向健康心理。
+
+                我們相信科技應該服務人性需求，每個人都有獲得心理健康支持的權利。因此，我們不斷創新，希望為社會帶來改變。</p>
+        </div>
+    </section>
+
+    <section class="result">
+        <h2>練習紀錄</h2>
+        <div class="filter-options">
+            <label for="practiceType">練習類型：</label>
+            <select id="practiceType">
+                <option value="teacher-practice">老師出題</option>
+                <option value="self-practice">自行練習</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;
+            <label for="reviewStatus">評分狀態：</label>
+            <select id="reviewStatus">
+                <option value="reviewed">已評分</option>
+                <option value="unreviewed">未評分</option>
+            </select>
+        </div>
+        <br>
+        <div class="result-content">
+            <div id="record-list" class="record-list">
+                <!-- 這裡將顯示練習紀錄 -->
+            </div>
+            <div class="pagination" id="result-pagination">
+                <button id="prev-btn">上一頁</button>
+                <span id="page-info"></span>
+                <button id="next-btn">下一頁</button>
+            </div>
+            <div class="chatbox" id="resultchatbox" style="display: none;height: 450px;">
+                <div class="chatbox-messages" id="resultchatboxMessages">
+                    <!-- 聊天訊息將顯示在這裡 -->
+                </div>
+                <div class="feedback-container">
+                    <label for="total-feedback">總評語：</label>
+                    <textarea id="total-feedback" rows="4" readonly></textarea>
+                </div>
+                <button id="return-btn">返回</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自行練習頁面 -->
+    <section class="studentpractice">
+        <div class="studentpractice-content">
+            <h2>自行練習</h2>
+            <div class="choice">
+                <h3>選擇情緒</h3><br>
+                <input type="checkbox" id="Joy" value="喜悅" />喜悅
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Sadness" value="悲傷" />悲傷<br>
+                <input type="checkbox" id="Anger" value="憤怒" />憤怒
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Fear" value="恐懼" />恐懼<br>
+                <input type="checkbox" id="Surprise" value="驚訝" />驚訝
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Disgust" value="厭惡" />厭惡<br>
+                <input type="checkbox" id="Gratitude" value="感激" />感激
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Anticipation" value="期待" />期待<br>
+                <input type="checkbox" id="Shame" value="羞愧" />羞愧
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Guilt" value="內疚" />內疚<br>
+                <input type="checkbox" id="Excitement" value="興奮" />興奮
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Calmness" value="平靜" />平靜<br>
+                <input type="checkbox" id="Anxiety" value="焦慮" />焦慮
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Loneliness" value="孤獨" />孤獨<br>
+                <input type="checkbox" id="Disappointment" value="失望" />失望
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Pride" value="自豪" />自豪<br>
+                <input type="checkbox" id="Empathy" value="同情" />同情
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Confusion" value="迷茫" />迷茫<br>
+                <input type="checkbox" id="Comfort" value="安慰" />安慰
+                &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Desire" value="渴望" />渴望<br><br>
+                <input type="checkbox" id="all-student" value="全選">全選
+                <button type="submit" id="submitbutton">提交</button>
+            </div>
+        </div>
+
+        <!-- 自行練習聊天頁面 -->
+        <div class="smalltalk">
+            <div class="chatbox-mess" id="chatboxMess">
+                <!--聊天訊息將顯示在這裡-->
+            </div>
+            <div class="chatbox-inputbox">
+                <textarea id="user" placeholder="輸入訊息..."></textarea>
+                <button id="submitButton">發送</button>
+            </div>
+            <button id="end">結束</button>
+        </div>
+    </section>
+
+    <!-- 老師出題頁面 -->
+    <section class="practice">
+        <h2>老師出題</h2>
+        <div id="practiceSelectionContainer" class="practice-selection">
+            <!-- 動態生成的練習選項會顯示在這裡 -->
+        </div>
+        <div class="pagination" id="teacherPagination">
+            <button id="teacher-prev-btn">上一頁</button>
+            <span id="teacher-page-info"></span>
+            <button id="teacher-next-btn">下一頁</button>
+        </div>
+        <div class="chatbox" id="teacherchatbox" style="display: none;">
+            <div class="chatbox-messages" id="teacherchatboxMessages">
+                <!-- 聊天訊息將顯示在這裡 -->
+            </div>
+            <div class="chatbox-input">
+                <textarea  id="userInput" placeholder="輸入訊息..."></textarea>
+                <button id="sendButton">發送</button>
+            </div>
+            <button id="endButton">結束</button>
+        </div>
+    </section>
+
+    <section class="emotion-selection" id="emotion-selection" style="display: none;">
+        <div class="emotion-selection-content">
+            <h3>選擇情緒</h3><br>
+            <input type="checkbox" id="Joy" value="喜悅" />喜悅
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Sadness" value="悲傷" />悲傷<br>
+            <input type="checkbox" id="Anger" value="憤怒" />憤怒
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Fear" value="恐懼" />恐懼<br>
+            <input type="checkbox" id="Surprise" value="驚訝" />驚訝
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Disgust" value="厭惡" />厭惡<br>
+            <input type="checkbox" id="Gratitude" value="感激" />感激
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Anticipation" value="期待" />期待<br>
+            <input type="checkbox" id="Shame" value="羞愧" />羞愧
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Guilt" value="內疚" />內疚<br>
+            <input type="checkbox" id="Excitement" value="興奮" />興奮
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Calmness" value="平靜" />平靜<br>
+            <input type="checkbox" id="Anxiety" value="焦慮" />焦慮
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Loneliness" value="孤獨" />孤獨<br>
+            <input type="checkbox" id="Disappointment" value="失望" />失望
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Pride" value="自豪" />自豪<br>
+            <input type="checkbox" id="Empathy" value="同情" />同情
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Confusion" value="迷茫" />迷茫<br>
+            <input type="checkbox" id="Comfort" value="安慰" />安慰
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" id="Desire" value="渴望" />渴望<br><br>
+            <input type="checkbox" id="all-emotion" value="全選">全選
+            <button type="button" id="submitEmotion">提交</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 希望心窗. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="student.js" type="module"></script>
+</body>
+
+</html>

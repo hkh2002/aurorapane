@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入頁面</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>登入</h2>
+        <form id="submitForm">
+            <label for="username">帳號：</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">密碼：</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" id="submit">登入</button>
+            <div id="link">
+                <a href="#forgotpassword" id="forgotPasswordButton">忘記密碼?</a>
+                <a href="register.html" id="register">還沒註冊嗎?</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="login.js" type="module"></script>
+
+</html>
