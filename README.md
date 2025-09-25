@@ -51,3 +51,8 @@
 ## 成果展示
 ![學生與 AI 的互動對話](docs/student-ai-demo.png)  
 ![老師端功能](docs/teacher-demo.png) 
+![老師端功能](https://github.com/user-attachments/assets/cece53b7-755e-48c0-b0c7-2a7b43065a76)
+
+
+
+
