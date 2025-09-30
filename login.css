@@ -16,7 +16,7 @@ body {
     border-radius: 10px;
     width: 250px;
     height: 280px;
-    top: 38%;
+    top: 50%;
     left: 64%;
     transform: translate(-50%, -50%);
 }
@@ -96,4 +96,5 @@ form button {
 
 form button:hover {
     background-color: #555;
+
 }
